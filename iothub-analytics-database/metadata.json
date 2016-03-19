@@ -1,7 +1,7 @@
 {
-  "itemDisplayName": "Starter template",
-  "description": "This template creates should be used as a reference on how to pass Github Azure template repo validation",
-  "summary": "This template serves as a validation reference",
+  "itemDisplayName": "Simple IoT infrastructure",
+  "description": "This template creates a simple IoT infrastructure (Azure IoT Hub, Stream Analytics job, SQL database) in Azure",
+  "summary": "This template provision an IoT infrastucture",
   "githubUsername": "takacs525",
   "dateUpdated": "2016-03-20"
 }
