@@ -11,7 +11,7 @@
   },
   "variables": {
     "iotHubName": "[concat(parameters('generalPrefix'), '-IoTHub')]",
-    "documentDBAccountName": "[concat(parameters('generalPrefix'), '-ddbaccount')]",
+    "documentDBAccountName": "[concat(parameters('generalPrefix'), '-iot')]",
     "documentDBDatabaseName": "IoTdatabase",
     "documentDBCollectionName": "IoTcollection"
   },
@@ -34,7 +34,11 @@
       "apiVersion": "2015-04-08",
       "type": "Microsoft.DocumentDb/databaseAccounts",
       "name": "[variables('documentDBAccountName')]",
-      "location": "[resourceGroup().location]"
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "name": "[variables('documentDBAccountName')]",
+        "databaseAccountOfferType": "Standard"
+      }
     }  
   ],
   "outputs": {
