@@ -25,7 +25,7 @@
   "variables": {
     "iotHubName": "[concat(parameters('generalPrefix'), '-IoTHub')]",
     "sqlServerName": "[concat(parameters('generalPrefix'), '-sqlserver')]",
-    "sqlDatabaseName": "[concat(parameters('generalPrefix'), '-SqlDB')]"
+    "sqlDatabaseName": "[concat(parameters('generalPrefix'), '-db')]"
   },
   "resources": [
     {
