@@ -3,7 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "generalPrefix": {
-      "type": "string"
+      "type": "string",
+      "metadata": {
+        "description": "The prefix for all generated object. Must be lowercase. It should match with the following regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$ or it will raise an error."
+      } 
     },
     "sqlServerAdminLogin": {
       "type": "string",
@@ -20,9 +23,9 @@
     }
   },
   "variables": {
-    "iotHubName": "[concat(parameters('generalPrefix'), 'IoTHub')]",
-    "sqlServerName": "[concat(parameters('generalPrefix'), 'SqlServer')]",
-    "sqlDatabaseName": "[concat(parameters('generalPrefix'), 'SqlDB')]"
+    "iotHubName": "[concat(parameters('generalPrefix'), '-IoTHub')]",
+    "sqlServerName": "[concat(parameters('generalPrefix'), '-sqlserver')]",
+    "sqlDatabaseName": "[concat(parameters('generalPrefix'), '-SqlDB')]"
   },
   "resources": [
     {
