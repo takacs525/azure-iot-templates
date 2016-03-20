@@ -1,0 +1,7 @@
+{
+  "itemDisplayName": "Simple IoT infrastructure",
+  "description": "This template creates a simple IoT infrastructure (Azure IoT Hub, Stream Analytics job, DocumentDB) in Azure",
+  "summary": "This template provision an IoT infrastucture",
+  "githubUsername": "takacs525",
+  "dateUpdated": "2016-03-20"
+}

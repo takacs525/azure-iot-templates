@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "generalPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "The prefix for all generated object. Must be lowercase. It should match with the following regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$ or it will raise an error."
+      } 
+    }
+  },
+  "variables": {
+    "iotHubName": "[concat(parameters('generalPrefix'), '-IoTHub')]",
+    "documentDBAccountName": "[concat(parameters('generalPrefix'), '-ddbaccount')]",
+    "documentDBDatabaseName": "IoTdatabase",
+    "documentDBCollectionName": "IoTcollection"
+  },
+  "resources": [
+    {
+      "apiVersion": "2016-02-03",
+      "type": "Microsoft.Devices/IotHubs",
+      "name": "[variables('iotHubName')]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "F1",
+        "tier": "Free",
+        "capacity": 1
+      },
+      "properties": {
+        "location": "[resourceGroup().location]"
+      }
+    },
+    {
+      "apiVersion": "2015-08-06",
+      "type": "Microsoft.DocumentDb/databaseAccounts",
+      "name": "[variables('documentDBAccountName')]",
+      "location": "[resourceGroup().location]"
+    }  
+  ],
+  "outputs": {
+    "hubKeys": {
+      "value": "[listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iotHubName')), '2016-02-03')]",
+      "type": "object"
+    }
+  }
+}
