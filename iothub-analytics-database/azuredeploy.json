@@ -2,22 +2,18 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "hubName": {
+    "generalPrefix": {
       "type": "string"
     }
   },
   "variables": {
-    "location": "[resourceGroup().location]",
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'storage')]",
-    "publicIPAddressName": "[concat('myPublicIp', uniquestring(resourceGroup().id))]",
-    "publicIPAddressType": "Dynamic",
-    "apiVersion": "2016-02-03"
+    "iotHubName": "[concat(parameters('generalPrefix'), 'IoTHub')]"
   },
   "resources": [
   {
-    "apiVersion": "[variables('apiVersion')]",
+    "apiVersion": "2016-02-03",
     "type": "Microsoft.Devices/IotHubs",
-    "name": "[parameters('hubName')]",
+    "name": "[variables('iotHubName')]",
     "location": "[resourceGroup().location]",
     "sku": {
       "name": "F1",
@@ -31,7 +27,7 @@
   ],
   "outputs": {
     "hubKeys": {
-      "value": "[listKeys(resourceId('Microsoft.Devices/IotHubs', parameters('hubName')), '2016-02-03')]",
+      "value": "[listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iotHubName')), '2016-02-03')]",
       "type": "object"
     }
   }
